@@ -17,8 +17,8 @@ CREATE TABLE Appointments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     date DATE,
     reason VARCHAR(1000),
-    pet_id INT NOT NULL,
-    FOREIGN KEY (pet_id) REFERENCES Pets(id)
+    pets_id INT NOT NULL,
+    FOREIGN KEY (pets_id) REFERENCES Pets(id)
 );
 
 -- Migración de datos (Rex y Luna)
