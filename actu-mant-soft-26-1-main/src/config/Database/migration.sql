@@ -27,6 +27,6 @@ INSERT INTO Owners (name, phone, email)
 VALUES ('Pablo Henao', '3106445502', 'juanvalencia0126@email.com');
 
 -- Mascotas 
-INSERT INTO Pets (name, species, owner_id)
+INSERT INTO Pets (name, species, owners_id)
 VALUES ('Rex', 'Perro', 1),
        ('Luna', 'Gato', 1);
