@@ -9,8 +9,8 @@ CREATE TABLE Pets (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
     species VARCHAR(20),
-    owner_id INT NOT NULL,
-    FOREIGN KEY (owner_id) REFERENCES Owners(id)
+    Owners_id INT NOT NULL,
+    FOREIGN KEY (owners_id) REFERENCES Owners(id)
 );
 
 CREATE TABLE Appointments (
