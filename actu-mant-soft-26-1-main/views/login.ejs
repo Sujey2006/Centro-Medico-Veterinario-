@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card">
+      <div class="card-body p-4">
+        <h2 class="card-title text-center mb-4">Iniciar sesión</h2>
+
+        <% if (error) { %>
+          <div class="alert alert-danger" role="alert">
+            <%= error %>
+          </div>
+        <% } %>
+
+        <form action="/auth/login" method="POST">
+          <div class="mb-3">
+            <label for="username" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="username" name="username" required placeholder="Ej: veterinario" />
+          </div>
+
+          <div class="mb-4">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" required placeholder="Ej: 1234" />
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Entrar</button>
+          </div>
+        </form>
+
+        <p class="text-muted mt-3 small">
+          Usuario demo (por defecto): <b>veterinario</b> / <b>1234</b>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

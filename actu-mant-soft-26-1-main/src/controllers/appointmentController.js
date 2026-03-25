@@ -28,7 +28,7 @@ exports.deleteAppointment = async (req, res) => {
         const id = req.params.id;
         await appointmentModel.deleteAppointment(id);
         res.redirect('/');
-    } catch (err) {
+    } catch (err) { 
         res.status(500).send(err.message);
     }
 };
