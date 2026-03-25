@@ -1,37 +1,34 @@
-const db = require('../config/db');
+const appointmentModel = require('../models/appointmentModel');
 
-exports.getAllAppointments = (req, res) => {
-    db.all("SELECT * FROM appointments ORDER BY appointment_date DESC", [], (err, rows) => {
-        if (err) {
-            return res.status(500).send(err.message);
-        }
-        res.render('index', { title: 'Panel de Citas', appointments: rows });
-    });
+exports.getAllAppointments = async (req, res) => {
+    try {
+        const appointments = await appointmentModel.getAllAppointments();
+        res.render('index', { title: 'Panel de Citas', appointments });
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
 };
 
 exports.getCreateForm = (req, res) => {
     res.render('create', { title: 'Agendar Nueva Cita' });
 };
 
-exports.createAppointment = (req, res) => {
-    const { pet_name, owner_name, service, appointment_date } = req.body;
-    const sql = "INSERT INTO appointments (pet_name, owner_name, service, appointment_date) VALUES (?, ?, ?, ?)";
-    const params = [pet_name, owner_name, service, appointment_date];
-
-    db.run(sql, params, function (err) {
-        if (err) {
-            return res.status(500).send(err.message);
-        }
+exports.createAppointment = async (req, res) => {
+    try {
+        const { pet_name, owner_name, service, appointment_date } = req.body;
+        await appointmentModel.createAppointment({ pet_name, owner_name, service, appointment_date });
         res.redirect('/');
-    });
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
 };
 
-exports.deleteAppointment = (req, res) => {
-    const id = req.params.id;
-    db.run("DELETE FROM appointments WHERE id = ?", id, function (err) {
-        if (err) {
-            return res.status(500).send(err.message);
-        }
+exports.deleteAppointment = async (req, res) => {
+    try {
+        const id = req.params.id;
+        await appointmentModel.deleteAppointment(id);
         res.redirect('/');
-    });
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
 };
