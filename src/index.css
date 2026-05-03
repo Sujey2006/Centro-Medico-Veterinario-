@@ -4,29 +4,49 @@
 
 :root {
   --primary: #6c5ce7;
-  --primary-hover: #5b4bc4;
   --secondary: #a29bfe;
-  --bg: #f8f9fa;
-  --text-dark: #2d3436;
-  --text-gray: #636e72;
+  --bg: #F8FAFC;
 }
 
 body {
-  @apply bg-[#f8f9fa] text-[#2d3436] font-sans;
+  @apply bg-[#F8FAFC] text-slate-900 font-sans antialiased;
+  overflow: hidden;
 }
 
-.btn-primary {
-  @apply bg-[#6c5ce7] hover:bg-[#5b4bc4] text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center gap-2;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E2E8F0;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #CBD5E1;
 }
 
-.card {
-  @apply bg-white rounded-xl shadow-sm p-6;
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.sidebar-link {
-  @apply flex items-center gap-3 p-3 rounded-lg text-[#636e72] hover:bg-[#f3f0ff] hover:text-[#6c5ce7] transition-all;
+.animate-in {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
-.sidebar-link.active {
-  @apply bg-[#f3f0ff] text-[#6c5ce7] font-semibold;
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Luxury Input */
+input, select {
+  @apply transition-all duration-200 border-slate-200 focus:ring-4 focus:ring-[#6c5ce7]/10 focus:border-[#6c5ce7] outline-none;
 }
