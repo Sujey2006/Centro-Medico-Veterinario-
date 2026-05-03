@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="card-title text-center mb-4">Editar Cita</h2>
+                <form action="/update/<%= appointment.id %>" method="POST">
+                    <div class="mb-3">
+                        <label for="pet_name" class="form-label">Nombre del Perrito</label>
+                        <input type="text" class="form-control" id="pet_name" name="pet_name" value="<%= appointment.pet_name %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="owner_name" class="form-label">Nombre del Dueño</label>
+                        <input type="text" class="form-control" id="owner_name" name="owner_name" value="<%= appointment.owner_name %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="service" class="form-label">Servicio</label>
+                        <select class="form-select" id="service" name="service" required>
+                            <option value="Baño y Perfume" <%= appointment.service === 'Baño y Perfume' ? 'selected' : '' %>>Baño y Perfume</option>
+                            <option value="Corte de Pelo" <%= appointment.service === 'Corte de Pelo' ? 'selected' : '' %>>Corte de Pelo</option>
+                            <option value="Limpieza de Oídos" <%= appointment.service === 'Limpieza de Oídos' ? 'selected' : '' %>>Limpieza de Oídos</option>
+                            <option value="Corte de Uñas" <%= appointment.service === 'Corte de Uñas' ? 'selected' : '' %>>Corte de Uñas</option>
+                            <option value="Spa Completo" <%= appointment.service === 'Spa Completo' ? 'selected' : '' %>>Spa Completo</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="appointment_date" class="form-label">Fecha y Hora</label>
+                        <input type="datetime-local" class="form-control" id="appointment_date" name="appointment_date" value="<%= appointment.appointment_date %>" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="status" class="form-label">Estado de la Cita</label>
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="Scheduled" <%= appointment.status === 'Scheduled' ? 'selected' : '' %>>Programada</option>
+                            <option value="In Progress" <%= appointment.status === 'In Progress' ? 'selected' : '' %>>En Proceso</option>
+                            <option value="Completed" <%= appointment.status === 'Completed' ? 'selected' : '' %>>Completada</option>
+                            <option value="Cancelled" <%= appointment.status === 'Cancelled' ? 'selected' : '' %>>Cancelada</option>
+                        </select>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Actualizar Cita</button>
+                        <a href="/" class="btn btn-outline-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

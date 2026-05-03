@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #6c5ce7;
+  --primary-hover: #5b4bc4;
+  --secondary: #a29bfe;
+  --bg: #f8f9fa;
+  --text-dark: #2d3436;
+  --text-gray: #636e72;
+}
+
+body {
+  @apply bg-[#f8f9fa] text-[#2d3436] font-sans;
+}
+
+.btn-primary {
+  @apply bg-[#6c5ce7] hover:bg-[#5b4bc4] text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200 flex items-center gap-2;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-sm p-6;
+}
+
+.sidebar-link {
+  @apply flex items-center gap-3 p-3 rounded-lg text-[#636e72] hover:bg-[#f3f0ff] hover:text-[#6c5ce7] transition-all;
+}
+
+.sidebar-link.active {
+  @apply bg-[#f3f0ff] text-[#6c5ce7] font-semibold;
+}
