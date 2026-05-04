@@ -2,51 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary: #6c5ce7;
-  --secondary: #a29bfe;
-  --bg: #F8FAFC;
+@layer base {
+  :root {
+    --primary: #6c5ce7;
+    --primary-soft: #f3f0ff;
+    --bg: #F8FAFC;
+  }
+
+  body {
+    @apply bg-[#F8FAFC] text-slate-900 font-sans antialiased select-none;
+    overflow: hidden;
+  }
 }
 
-body {
-  @apply bg-[#F8FAFC] text-slate-900 font-sans antialiased;
-  overflow: hidden;
+/* Scrollbar Minimalista */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+
+/* Animaciones Premium */
+.animate-slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #E2E8F0;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #CBD5E1;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.animate-in {
-  animation: fadeIn 0.5s ease-out forwards;
+.glass-card {
+  @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
 }
 
-/* Glassmorphism */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Luxury Input */
-input, select {
-  @apply transition-all duration-200 border-slate-200 focus:ring-4 focus:ring-[#6c5ce7]/10 focus:border-[#6c5ce7] outline-none;
+/* Estilos de botones tipo SaaS */
+.btn-pro {
+  @apply transition-all duration-300 active:scale-95 font-bold uppercase tracking-widest text-[10px] flex items-center justify-center gap-2;
 }
